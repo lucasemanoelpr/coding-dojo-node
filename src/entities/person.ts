@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, BaseEntity } from 'typeorm'
 import { Market } from './market'
 import { Product } from './product'
 
-@Entity()
-export class Person {
+@Entity('persons')
+export class Person extends BaseEntity {
 	@PrimaryGeneratedColumn('uuid')
 		id: string
 

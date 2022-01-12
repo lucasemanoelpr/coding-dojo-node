@@ -1,19 +1,20 @@
-import {Entity, PrimaryGeneratedColumn, ManyToOne, Column, OneToMany} from "typeorm";
-import { Market } from "./market";
+import {Entity, PrimaryGeneratedColumn, ManyToOne, Column, OneToMany, BaseEntity, JoinColumn} from "typeorm";
+import { Market } from './market'
 import { Person } from './person'
 
-@Entity()
-export class Product {
+@Entity('products')
+export class Product extends BaseEntity {
 
   @PrimaryGeneratedColumn('uuid')
-    id: string
+  id: string
 
   @Column()
-    name: string
+  name: string
 
   @ManyToOne(() => Person, person => person.products)
-    person: string
+  @JoinColumn({ name: 'id_person', referencedColumnName: 'id' })
+  person: Person
 
   @OneToMany(() => Market, market => market.product)
-		market: Market[]
+  market: Market[]
 }
