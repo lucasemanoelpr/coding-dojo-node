@@ -4,12 +4,12 @@ import { Person } from './person.entity'
 @Entity()
 export class Product {
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string
 
-    @Column()
-    name: string;
+  @Column()
+  name: string
 
-    @ManyToOne(() => Person, person => person.products)
-    id_person: number;
+  @ManyToOne(() => Person, person => person.products)
+  person: string
 }

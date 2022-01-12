@@ -1,18 +1,17 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
-import { Product } from './product.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm'
+import { Product } from './product.entity'
 
 @Entity()
 export class Person {
+	@PrimaryGeneratedColumn('uuid')
+		id: string
 
-    @PrimaryGeneratedColumn()
-    id: number;
+	@Column()
+		name: string
 
-    @Column()
-    name: string;
+	@Column()
+		cash: number
 
-    @Column()
-    cash: number;
-
-    @OneToMany(() => Product, product => product.id_person)
-    products: Product[];
+	@OneToMany(() => Product, product => product.person)
+		products: Product[]
 }
